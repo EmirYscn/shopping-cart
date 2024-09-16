@@ -17,7 +17,7 @@
   align-items: center;
   justify-content: center;
   gap: 2em;
-  background: linear-gradient(135deg, rgb(135, 160, 178), #424141);
+  background: linear-gradient(135deg, rgb(162, 197, 216), rgb(73, 178, 235));
 }
 
 .home p {

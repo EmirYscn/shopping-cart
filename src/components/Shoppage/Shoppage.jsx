@@ -4,23 +4,30 @@ import ProductCards from "../ProductCards/ProductCards";
 import Error from "../Error/Error";
 import Loader from "../Loader/Loader";
 
+import styles from "./Shoppage.module.css";
+
 function Shoppage() {
   const [cartCount, setCartCount] = useState(0);
+  const [cartPrice, setCartPrice] = useState(0);
   const [data, setData] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
 
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        setIsLoading(true);
-        const products = await (
-          await fetch("https://fakestoreapi.com/products")
-        ).json();
+        const response = await fetch("https://fakestoreapi.com/products");
+
+        if (!response.ok) {
+          throw new Error(`HTTP error: Status ${response.status}`);
+        }
+
+        const products = await response.json();
+
         console.log(products);
         setData(products);
       } catch (err) {
-        setError(err);
+        setError(err.message);
         setData(null);
       } finally {
         setIsLoading(false);
@@ -29,12 +36,26 @@ function Shoppage() {
     fetchProducts();
   }, []);
 
+  function handleCartCount() {
+    setCartCount((cnt) => (cnt += 1));
+  }
+
+  function handleCartPrice(price) {
+    setCartPrice((totalPrice) => (totalPrice += price));
+  }
+
   return (
-    <div>
-      <PageNav cart={cartCount} />
+    <div className={styles.shoppage}>
+      <PageNav cartCount={cartCount} cartPrice={cartPrice} />
       {isLoading && <Loader />}
-      {error && <Error />}
-      {data && <ProductCards products={data} />}
+      {error && <Error error={error} />}
+      {data && (
+        <ProductCards
+          products={data}
+          onSetCartCount={handleCartCount}
+          onSetCartPrice={handleCartPrice}
+        />
+      )}
     </div>
   );
 }

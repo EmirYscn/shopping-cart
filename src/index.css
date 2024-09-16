@@ -1,3 +1,5 @@
+@import "https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&display=swap";
+
 /* These CSS variables are global, so they are available in all CSS modules */
 :root {
   --color-brand--1: #ffb545;
@@ -9,4 +11,9 @@
   --color-light--1: #aaa;
   --color-light--2: #ececec;
   --color-light--3: #d6dee0;
+}
+
+body {
+  font-family: "Manrope", sans-serif;
+  background-color: rgb(162, 197, 216);
 }

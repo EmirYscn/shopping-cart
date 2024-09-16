@@ -1,10 +1,17 @@
 import ProductCard from "./ProductCard";
 
-function ProductCards({ products }) {
+import styles from "./ProductCards.module.css";
+
+function ProductCards({ products, onSetCartCount, onSetCartPrice }) {
   return (
-    <ul>
+    <ul className={styles.productCards}>
       {products.map((product) => (
-        <ProductCard product={product} key={product.id} />
+        <ProductCard
+          key={product.id}
+          product={product}
+          onSetCartCount={onSetCartCount}
+          onSetCartPrice={onSetCartPrice}
+        />
       ))}
     </ul>
   );

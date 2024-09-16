@@ -1,5 +1,5 @@
-function Error() {
-  return <h1>Error</h1>;
+function Error({ error }) {
+  return <h1>{error}</h1>;
 }
 
 export default Error;

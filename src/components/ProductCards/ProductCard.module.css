@@ -11,9 +11,15 @@
   /* padding: 1em; */
   padding-bottom: 0;
   background-color: rgb(255, 255, 255);
+  transition: transform 0.5s;
+}
+
+.productCard:hover {
+  /* transform: scale(1.1); */
 }
 
 .title {
+  margin-top: 1em;
   width: 80%;
   text-align: center;
   text-wrap: wrap;
@@ -30,6 +36,16 @@
 
 .image {
   border-radius: 8px;
+  width: 150px;
+  transition: transform 0.5s;
+}
+
+.image:hover {
+  transform: scale(1.2);
+}
+.image img {
+  width: 150px;
+  height: auto;
 }
 
 .cart {
@@ -38,6 +54,10 @@
   gap: 2em;
   align-self: end;
   width: 100%;
+  transition: opacity 0.5s;
+}
+.cart:hover {
+  opacity: 0.5;
 }
 
 .count {

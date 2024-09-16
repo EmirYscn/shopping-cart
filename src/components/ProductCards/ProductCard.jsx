@@ -1,6 +1,9 @@
 import { useState } from "react";
 import Button from "../Button/Button";
 import styles from "./ProductCard.module.css";
+import StarRating from "../StarRating/StarRating";
+
+import { truncate } from "../../utils/truncDes";
 
 function ProductCard({ product, onSetCartCount, onSetCartPrice }) {
   const [itemCount, setItemCount] = useState(0);
@@ -30,7 +33,7 @@ function ProductCard({ product, onSetCartCount, onSetCartPrice }) {
         <h3>{product.title}</h3>
       </div>
       <div className={styles.desc}>
-        <p>{product.description}</p>
+        <p>{truncate(product.description, 100)}&hellip;</p>
       </div>
       <div className={styles.image}>
         <img src={product.image} alt="image of product" />
@@ -38,7 +41,10 @@ function ProductCard({ product, onSetCartCount, onSetCartPrice }) {
       <div className={styles.cost}>
         <span className={styles.price}>${product.price}</span>
         <span className={styles.ratings}>
-          {product.rating.rate} / {product.rating.count}
+          <StarRating
+            size={24}
+            defaultRating={Math.round(product.rating.rate)}
+          />
         </span>
       </div>
       <div className={styles.count}>

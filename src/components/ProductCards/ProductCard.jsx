@@ -5,7 +5,12 @@ import StarRating from "../StarRating/StarRating";
 
 import { truncate } from "../../utils/truncDes";
 
-function ProductCard({ product, onSetCartCount, onSetCartPrice }) {
+function ProductCard({
+  product,
+  onSetCartCount,
+  onSetCartPrice,
+  onAddCartItems,
+}) {
   const [itemCount, setItemCount] = useState(0);
 
   function handleDesc() {
@@ -23,7 +28,7 @@ function ProductCard({ product, onSetCartCount, onSetCartPrice }) {
 
     const price = itemCount * product.price;
     onSetCartPrice(price);
-
+    onAddCartItems({ product, count: itemCount });
     setItemCount(0);
   }
 

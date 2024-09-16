@@ -25,6 +25,12 @@
   border-radius: 0 0 8px 8px;
 }
 
+.cart-quantity {
+  box-shadow: none;
+  border-radius: none;
+  background-color: white;
+}
+
 .dec,
 .inc {
   /* border-radius: 50%; */

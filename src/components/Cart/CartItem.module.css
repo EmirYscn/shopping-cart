@@ -1,0 +1,27 @@
+.cartItem {
+  font-family: monospace;
+  font-size: 1.2em;
+  display: grid;
+  grid-template-columns: 200px 1fr auto;
+  align-items: center;
+  gap: 2em;
+  border-bottom: 1px solid rgba(128, 128, 128, 0.361);
+  padding-bottom: 1em;
+}
+
+.titlePrice {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 5px;
+}
+.quantity {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.count {
+  border: 1px solid black;
+}

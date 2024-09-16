@@ -6,7 +6,7 @@ import styles from "./Homepage.module.css";
 function Homepage() {
   return (
     <div className={styles.homepage}>
-      <PageNav />
+      <PageNav inShop={false} />
       <div className={styles.home}>
         <p>Welcome to our Shop</p>
         <Button type="primary" onClick={() => {}}>

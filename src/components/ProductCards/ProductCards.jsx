@@ -2,7 +2,12 @@ import ProductCard from "./ProductCard";
 
 import styles from "./ProductCards.module.css";
 
-function ProductCards({ products, onSetCartCount, onSetCartPrice }) {
+function ProductCards({
+  products,
+  onSetCartCount,
+  onSetCartPrice,
+  onAddCartItems,
+}) {
   return (
     <ul className={styles.productCards}>
       {products.map((product) => (
@@ -11,6 +16,7 @@ function ProductCards({ products, onSetCartCount, onSetCartPrice }) {
           product={product}
           onSetCartCount={onSetCartCount}
           onSetCartPrice={onSetCartPrice}
+          onAddCartItems={onAddCartItems}
         />
       ))}
     </ul>

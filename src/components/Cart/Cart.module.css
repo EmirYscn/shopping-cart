@@ -4,6 +4,7 @@
   gap: 1em;
   padding: 40px 80px;
   background-color: white;
+  min-height: calc(100vh - 100px);
 }
 
 .cart ul {

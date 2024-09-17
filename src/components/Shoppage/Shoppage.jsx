@@ -9,8 +9,6 @@ import Loader from "../Loader/Loader";
 import styles from "./Shoppage.module.css";
 
 function Shoppage() {
-  const [cartCount, setCartCount] = useState(0);
-  const [cartPrice, setCartPrice] = useState(0);
   const [cartItems, setCartItems] = useState([]);
 
   const [data, setData] = useState([]);
@@ -43,14 +41,6 @@ function Shoppage() {
     fetchProducts();
   }, []);
 
-  function handleCartCount() {
-    setCartCount((cnt) => (cnt += 1));
-  }
-
-  function handleCartPrice(price) {
-    setCartPrice((totalPrice) => (totalPrice += price));
-  }
-
   function handleCartItems(item) {
     console.log(item);
     console.log(cartItems);
@@ -59,16 +49,11 @@ function Shoppage() {
 
   return (
     <div className={styles.shoppage}>
-      <PageNav cartCount={cartCount} cartPrice={cartPrice} inShop={true} />
+      <PageNav cartItems={cartItems} inShop={true} />
       {isLoading && <Loader />}
       {error && <Error error={error} />}
       {data && isRootShopRoute ? (
-        <ProductCards
-          products={data}
-          onSetCartCount={handleCartCount}
-          onSetCartPrice={handleCartPrice}
-          onAddCartItems={handleCartItems}
-        />
+        <ProductCards products={data} onAddCartItems={handleCartItems} />
       ) : (
         <Outlet context={{ cartItems, setCartItems }} />
       )}

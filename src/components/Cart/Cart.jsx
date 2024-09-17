@@ -9,11 +9,20 @@ function Cart() {
   return (
     <div className={styles.cart}>
       <h1>YOUR CART</h1>
-      <ul>
-        {cartItems.map((cartItem) => (
-          <CartItem key={cartItem.product.id} cartItem={cartItem} />
-        ))}
-      </ul>
+      {!cartItems.length ? (
+        <h2>Your cart is empty</h2>
+      ) : (
+        <ul>
+          {cartItems.map((cartItem) => (
+            <CartItem
+              key={cartItem.product.id}
+              cartItem={cartItem}
+              cartItems={cartItems}
+              setCartItems={setCartItems}
+            />
+          ))}
+        </ul>
+      )}
     </div>
   );
 }

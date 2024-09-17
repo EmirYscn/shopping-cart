@@ -2,7 +2,13 @@ import { NavLink } from "react-router-dom";
 import Logo from "./Logo";
 import styles from "./PageNav.module.css";
 
-function PageNav({ cartCount, cartPrice, inShop }) {
+function PageNav({ cartItems, inShop }) {
+  const cartPrice = cartItems?.reduce(
+    (acc, cur) => (acc += cur.product.price * cur.count),
+    0
+  );
+  const cartCount = cartItems?.reduce((acc, cur) => (acc += cur.count), 0);
+
   return (
     <nav className={styles.nav}>
       <Logo />
@@ -18,7 +24,7 @@ function PageNav({ cartCount, cartPrice, inShop }) {
             <NavLink to="cart">
               <img src="./cart.png" alt="" className={styles.img} />
             </NavLink>
-            {cartCount && (
+            {cartItems && (
               <>
                 <span>{cartCount}</span>
                 <span>{cartPrice.toFixed(2)}$</span>

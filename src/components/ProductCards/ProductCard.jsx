@@ -4,9 +4,11 @@ import styles from "./ProductCard.module.css";
 import StarRating from "../StarRating/StarRating";
 
 import { truncate } from "../../utils/truncDes";
+import { useNavigate } from "react-router-dom";
 
 function ProductCard({ product, onAddCartItems }) {
   const [itemCount, setItemCount] = useState(0);
+  const navigate = useNavigate();
 
   function handleDesc() {
     if (itemCount === 0) return;
@@ -25,15 +27,22 @@ function ProductCard({ product, onAddCartItems }) {
     setItemCount(0);
   }
 
+  function handleProductClick() {
+    console.log(product.id);
+    navigate(`/shop/${product.id}`);
+  }
+
   return (
     <li className={styles.productCard}>
-      <div className={styles.title}>
+      <div className={styles.title} onClick={handleProductClick}>
         <h3>{product.title}</h3>
       </div>
       <div className={styles.desc}>
-        <p>{truncate(product.description, 100)}&hellip;</p>
+        <p>
+          <em>{truncate(product.description, 100)}&hellip;</em>
+        </p>
       </div>
-      <div className={styles.image}>
+      <div className={styles.image} onClick={handleProductClick}>
         <img src={product.image} alt="image of product" />
       </div>
       <div className={styles.cost}>
@@ -46,16 +55,16 @@ function ProductCard({ product, onAddCartItems }) {
         </span>
       </div>
       <div className={styles.count}>
-        <Button type="dec" onClick={() => handleDesc()}>
+        <Button type="dec" onClick={(e) => handleDesc(e)}>
           -
         </Button>
         <span>{itemCount}</span>
-        <Button type="inc" onClick={() => handleInc()}>
+        <Button type="inc" onClick={(e) => handleInc(e)}>
           +
         </Button>
       </div>
       <div className={styles.cart}>
-        <Button type="cart" onClick={() => handleAddCart()}>
+        <Button type="cart" onClick={(e) => handleAddCart(e)}>
           Add to Cart
         </Button>
       </div>

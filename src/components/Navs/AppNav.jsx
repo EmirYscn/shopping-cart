@@ -2,7 +2,7 @@ import { NavLink } from "react-router-dom";
 import Logo from "./Logo";
 import styles from "./PageNav.module.css";
 
-function PageNav({ cartItems, inShop }) {
+function AppNav({ cartItems, inShop }) {
   const cartPrice = cartItems?.reduce(
     (acc, cur) => (acc += cur.product.price * cur.count),
     0
@@ -37,4 +37,4 @@ function PageNav({ cartItems, inShop }) {
   );
 }
 
-export default PageNav;
+export default AppNav;

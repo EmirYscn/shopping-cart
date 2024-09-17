@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
-import { Outlet, useLocation } from "react-router-dom";
+import { Outlet, useLocation, useOutletContext } from "react-router-dom";
 
-import PageNav from "../PageNav/PageNav";
+import PageNav from "../Navs/PageNav";
 import ProductCards from "../ProductCards/ProductCards";
 import Error from "../Error/Error";
 import Loader from "../Loader/Loader";
@@ -9,19 +9,24 @@ import Loader from "../Loader/Loader";
 import styles from "./Shoppage.module.css";
 
 function Shoppage() {
-  const [cartItems, setCartItems] = useState([]);
+  const { cartItems, setCartItems } = useOutletContext();
 
   const [data, setData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  const location = useLocation();
-  const isRootShopRoute = location.pathname === "/shop";
+  const { pathname } = useLocation();
+  const isRootShopRoute = pathname === "/shop";
 
   useEffect(() => {
+    const controller = new AbortController();
+    const signal = controller.signal;
+
     const fetchProducts = async () => {
       try {
-        const response = await fetch("https://fakestoreapi.com/products");
+        const response = await fetch("https://fakestoreapi.com/products", {
+          signal,
+        });
 
         if (!response.ok) {
           throw new Error(`HTTP error: Status ${response.status}`);
@@ -38,7 +43,12 @@ function Shoppage() {
         setIsLoading(false);
       }
     };
+    console.log("fetching items");
     fetchProducts();
+
+    // return () => {
+    //   controller.abort();
+    // };
   }, []);
 
   function handleCartItems(item) {
@@ -49,13 +59,12 @@ function Shoppage() {
 
   return (
     <div className={styles.shoppage}>
-      <PageNav cartItems={cartItems} inShop={true} />
       {isLoading && <Loader />}
       {error && <Error error={error} />}
       {data && isRootShopRoute ? (
         <ProductCards products={data} onAddCartItems={handleCartItems} />
       ) : (
-        <Outlet context={{ cartItems, setCartItems }} />
+        <Outlet context={{ cartItems, setCartItems, product: data }} />
       )}
     </div>
   );

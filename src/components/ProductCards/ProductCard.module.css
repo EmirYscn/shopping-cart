@@ -3,12 +3,11 @@
   display: grid;
   grid-template-rows: auto;
   justify-items: center;
-  border-top: 1em rgb(45, 172, 236) solid;
+  border-top: 1.5em var(--color-3) solid;
   gap: 1em;
   border-radius: 8px;
   box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px,
     rgba(0, 0, 0, 0.22) 0px 15px 12px;
-  /* padding: 1em; */
   padding-bottom: 0;
   background-color: rgb(255, 255, 255);
   transition: transform 0.5s;
@@ -25,6 +24,8 @@
   text-wrap: wrap;
   border-bottom: 2px rgb(236, 232, 232) solid;
   font-size: 1.2em;
+  padding: 0 2em;
+  cursor: pointer;
 }
 
 .desc {
@@ -32,12 +33,17 @@
   color: rgba(28, 28, 28, 0.563);
   width: 75%;
   text-wrap: pretty;
+  padding: 0 2em;
 }
 
 .image {
   border-radius: 8px;
   width: 150px;
+  width: 100%;
+  text-align: center;
   transition: transform 0.5s;
+  padding: 0 3em;
+  cursor: pointer;
 }
 
 .image:hover {
@@ -72,6 +78,7 @@
   width: 90%;
   display: flex;
   justify-content: space-between;
+  padding: 0 2em;
 }
 
 .price {

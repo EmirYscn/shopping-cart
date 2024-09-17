@@ -61,6 +61,22 @@
   box-shadow: none;
 }
 
+.login {
+  color: black;
+}
+
+.cartEmpty {
+  background-color: var(--color-4);
+  color: wheat;
+  width: 50%;
+}
+
+.checkout {
+  background-color: var(--color-brand--1);
+  grid-column: span 2;
+  border-radius: 0;
+}
+
 .btn a:link,
 .btn a:visited {
   text-decoration: none;

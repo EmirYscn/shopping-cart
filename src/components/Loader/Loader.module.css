@@ -1,0 +1,14 @@
+.loader {
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  column-gap: 10em;
+  row-gap: 3em;
+  padding: 4em 12em;
+}
+.loader div {
+  background-color: #97b2e4;
+  opacity: 0.3;
+  height: 600px;
+  border-radius: 8px;
+}

@@ -6,6 +6,7 @@ import Cart from "./components/Cart/Cart.jsx";
 import NotFound from "./components/NotFound/NotFound.jsx";
 import AppLayout from "./components/Layouts/AppLayout.jsx";
 import ProductPage from "./components/ProductPage/ProductPage.jsx";
+import Login from "./components/Login/Login.jsx";
 
 const router = createBrowserRouter([
   // {
@@ -29,6 +30,10 @@ const router = createBrowserRouter([
       {
         index: true,
         element: <Homepage />,
+      },
+      {
+        path: "account",
+        element: <Login />,
       },
       {
         path: "shop",

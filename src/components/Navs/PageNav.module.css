@@ -19,15 +19,18 @@
 .nav ul li {
   display: flex;
   justify-content: space-between;
-  align-items: center;
   gap: 0.5em;
   list-style-type: none;
+}
+.nav ul li a {
+  display: flex;
+  align-items: center;
 }
 .nav span {
   font-size: 1.4em;
 }
 .img {
-  height: 2.2rem;
+  height: 1.2rem;
 }
 
 .nav a:link,

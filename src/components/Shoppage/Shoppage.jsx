@@ -54,7 +54,18 @@ function Shoppage() {
   function handleCartItems(item) {
     console.log(item);
     console.log(cartItems);
-    setCartItems([...cartItems, item]);
+    if (cartItems.some((cartItem) => cartItem.product.id === item.product.id)) {
+      // Update the existing cart item
+      const updatedCartItems = cartItems.map((cartItem) =>
+        cartItem.product.id === item.product.id
+          ? { ...cartItem, count: cartItem.count + item.count } // Update count
+          : cartItem
+      );
+      setCartItems(updatedCartItems);
+    } else {
+      // Add new item to cart
+      setCartItems([...cartItems, item]);
+    }
   }
 
   return (

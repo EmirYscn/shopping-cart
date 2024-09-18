@@ -1,10 +1,9 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+
 import Button from "../Button/Button";
 import styles from "./ProductCard.module.css";
 import StarRating from "../StarRating/StarRating";
-
-import { truncate } from "../../utils/truncDes";
-import { useNavigate } from "react-router-dom";
 
 function ProductCard({ product, onAddCartItems }) {
   const [itemCount, setItemCount] = useState(0);
@@ -29,7 +28,7 @@ function ProductCard({ product, onAddCartItems }) {
 
   function handleProductClick() {
     console.log(product.id);
-    navigate(`/shop/${product.id}`);
+    navigate(`/shop/all/product/${product.id}`);
   }
 
   return (
@@ -37,11 +36,11 @@ function ProductCard({ product, onAddCartItems }) {
       <div className={styles.title} onClick={handleProductClick}>
         <h3>{product.title}</h3>
       </div>
-      <div className={styles.desc}>
+      {/* <div className={styles.desc}>
         <p>
           <em>{truncate(product.description, 100)}&hellip;</em>
         </p>
-      </div>
+      </div> */}
       <div className={styles.image} onClick={handleProductClick}>
         <img src={product.image} alt="image of product" />
       </div>
@@ -49,7 +48,7 @@ function ProductCard({ product, onAddCartItems }) {
         <span className={styles.price}>${product.price}</span>
         <span className={styles.ratings}>
           <StarRating
-            size={24}
+            size={20}
             defaultRating={Math.round(product.rating.rate)}
           />
         </span>
@@ -64,6 +63,9 @@ function ProductCard({ product, onAddCartItems }) {
         </Button>
       </div>
       <div className={styles.cart}>
+        <Button type="details" onClick={() => handleProductClick()}>
+          View Details
+        </Button>
         <Button type="cart" onClick={(e) => handleAddCart(e)}>
           Add to Cart
         </Button>

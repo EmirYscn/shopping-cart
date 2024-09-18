@@ -4,18 +4,18 @@ function Footer() {
   return (
     <div className={styles.footer}>
       <div className={styles.footerLeft}>
-        <img src="./location.png" alt="" />
+        <img src="/location.png" alt="" />
         <div>
           <address>1880 Northwest Boulevard</address>
           <address>
             <strong>Washington, United States</strong>
           </address>
         </div>
-        <img src="./phone.png" alt="" />
+        <img src="/phone.png" alt="" />
         <div>
           <span> +1 202-213-1625</span>
         </div>
-        <img src="./mail.png" alt="" />
+        <img src="/mail.png" alt="" />
         <div>
           <span>support@company.com</span>
         </div>
@@ -31,10 +31,10 @@ function Footer() {
           itaque illo unde earum.
         </span>
         <div>
-          <img src="./facebook.png" alt="" />
-          <img src="./twitter.png" alt="" />
-          <img src="./linkedin.png" alt="" />
-          <img src="./github.png" alt="" />
+          <img src="/facebook.png" alt="" />
+          <img src="/twitter.png" alt="" />
+          <img src="/linkedin.png" alt="" />
+          <img src="/github.png" alt="" />
         </div>
       </div>
     </div>

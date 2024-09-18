@@ -23,6 +23,22 @@
   align-self: end;
   width: 100%;
   border-radius: 0 0 8px 8px;
+  transition: opacity 0.5s;
+}
+
+.cart:hover {
+  opacity: 0.5;
+}
+.back {
+  position: absolute;
+  padding: 0;
+  box-shadow: none;
+  background-color: white;
+  top: 130px;
+  left: 1em;
+}
+.back img {
+  height: 2em;
 }
 
 .cart-quantity {
@@ -75,6 +91,13 @@
   background-color: var(--color-brand--1);
   grid-column: span 2;
   border-radius: 0;
+}
+.details {
+  background-color: white;
+  border-radius: none;
+  box-shadow: none;
+  font-size: 1em;
+  transition: none;
 }
 
 .btn a:link,

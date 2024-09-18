@@ -10,22 +10,40 @@ function PageNav({ cartItems }) {
   const cartCount = cartItems?.reduce((acc, cur) => (acc += cur.count), 0);
 
   const { pathname } = useLocation();
-  const inShop = pathname === "/shop" || pathname === "/shop/cart";
+  const notInShop = pathname === "/";
+  // const inShop = pathname === "/shop" || pathname === "/shop/cart";
 
   return (
     <nav className={styles.nav}>
-      <Logo />
+      <div className={styles.navLeft}>
+        <Logo />
+        <ul>
+          <li>
+            <NavLink to="/" end>
+              Home
+            </NavLink>
+          </li>
+          <li>
+            <NavLink to="/shop/all" end>
+              Store
+            </NavLink>
+            <NavLink to="/shop/all">
+              <img src="/shop.png" alt="" className={styles.img} />
+            </NavLink>
+          </li>
+        </ul>
+      </div>
       <ul>
         <li>
           <NavLink to="/about">About</NavLink>
           <NavLink to="/about">
-            <img src="./about.png" alt="" className={styles.img} />
+            <img src="/about.png" alt="" className={styles.img} />
           </NavLink>
         </li>
         <li>
           <NavLink to="/support">Support</NavLink>
           <NavLink to="/support">
-            <img src="./support.png" alt="" className={styles.img} />
+            <img src="/support.png" alt="" className={styles.img} />
           </NavLink>
         </li>
         <li>
@@ -33,25 +51,18 @@ function PageNav({ cartItems }) {
             Account
           </NavLink>
           <NavLink to="/account">
-            <img src="./account.png" alt="" className={styles.img} />
-          </NavLink>
-        </li>
-        <li>
-          <NavLink to="/shop" end>
-            Shop
-          </NavLink>
-          <NavLink to="/shop">
-            <img src="./shop.png" alt="" className={styles.img} />
-          </NavLink>
-        </li>
-        <li>
-          <NavLink to="/shop/cart">Cart</NavLink>
-          <NavLink to="/shop/cart">
-            <img src="./cart.png" alt="" className={styles.img} />
+            <img src="/account.png" alt="" className={styles.img} />
           </NavLink>
         </li>
 
-        {inShop && (
+        <li>
+          <NavLink to="/shop/all/cart">Cart</NavLink>
+          <NavLink to="/shop/all/cart">
+            <img src="/cart.png" alt="" className={styles.img} />
+          </NavLink>
+        </li>
+
+        {!notInShop && (
           <li>
             {cartItems && (
               <>

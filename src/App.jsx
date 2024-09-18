@@ -7,22 +7,9 @@ import NotFound from "./components/NotFound/NotFound.jsx";
 import AppLayout from "./components/Layouts/AppLayout.jsx";
 import ProductPage from "./components/ProductPage/ProductPage.jsx";
 import Login from "./components/Login/Login.jsx";
+import ShoppageLayout from "./components/Shoppage/ShoppageLayout.jsx";
 
 const router = createBrowserRouter([
-  // {
-  //   path: "/",
-  //   element: <Homepage />,
-  // },
-  // {
-  //   path: "shop",
-  //   element: <Shoppage />,
-  //   children: [
-  //     {
-  //       path: "cart",
-  //       element: <Cart />,
-  //     },
-  //   ],
-  // },
   {
     path: "/",
     element: <AppLayout />,
@@ -37,14 +24,19 @@ const router = createBrowserRouter([
       },
       {
         path: "shop",
-        element: <Shoppage />,
+        element: <ShoppageLayout />,
         children: [
+          { index: true, element: <Shoppage /> },
           {
-            path: ":productId",
+            path: ":productType",
+            element: <Shoppage />,
+          },
+          {
+            path: ":productType/product/:productId",
             element: <ProductPage />,
           },
           {
-            path: "cart",
+            path: ":productType/cart",
             element: <Cart />,
           },
         ],

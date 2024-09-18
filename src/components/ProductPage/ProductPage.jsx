@@ -1,12 +1,45 @@
-import { useOutletContext, useParams } from "react-router-dom";
+import { useNavigate, useOutletContext, useParams } from "react-router-dom";
+
+import styles from "./ProductPage.module.css";
+import Button from "../Button/Button";
 
 function ProductPage() {
+  window.scrollTo(0, 0);
+  const navigate = useNavigate();
   const { productId } = useParams();
-  const { product: product } = useOutletContext();
+
+  const { data: product, handleCartItems } = useOutletContext();
 
   const currentProduct = product.find((p) => p.id === parseInt(productId));
 
-  return <div>{currentProduct.title}</div>;
+  return (
+    <>
+      <Button type="back" onClick={() => navigate(-1)}>
+        <img src="/back.png" alt="" />
+      </Button>
+
+      <div className={styles.productPage}>
+        <div className={styles.image}>
+          <img src={currentProduct.image} alt="" />
+        </div>
+        <div className={styles.productInfo}>
+          <span>
+            <strong>{currentProduct.title}</strong>
+          </span>
+          <span>{currentProduct.description}</span>
+          <span>${currentProduct.price}</span>
+          <Button
+            type="cart"
+            onClick={() =>
+              handleCartItems({ product: currentProduct, count: 1 })
+            }
+          >
+            Add to Cart
+          </Button>
+        </div>
+      </div>
+    </>
+  );
 }
 
 export default ProductPage;

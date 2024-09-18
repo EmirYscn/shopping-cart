@@ -17,7 +17,7 @@ function Cart() {
       {!cartItems.length ? (
         <>
           <h2>Your cart is empty</h2>
-          <Button type="cartEmpty" onClick={() => navigate("/shop")}>
+          <Button type="cartEmpty" onClick={() => navigate("/shop/all")}>
             Continue Shopping
           </Button>
         </>

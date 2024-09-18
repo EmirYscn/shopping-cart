@@ -9,7 +9,7 @@ function Homepage() {
       <div className={styles.home}>
         <p>Welcome to our Shop</p>
         <Button type="primary" onClick={() => {}}>
-          <Link to="shop">Begin Shopping</Link>
+          <Link to="shop/all">Begin Shopping</Link>
         </Button>
       </div>
     </div>

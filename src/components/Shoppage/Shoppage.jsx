@@ -14,8 +14,16 @@ import styles from "./Shoppage.module.css";
 import ProductNav from "../Navs/ProductNav";
 
 function Shoppage() {
-  const { cartItems, setCartItems, data, isLoading, error } =
-    useOutletContext();
+  document.title = "Shop";
+  const {
+    cartItems,
+    setCartItems,
+    data,
+    isLoading,
+    error,
+    sortType,
+    setSortType,
+  } = useOutletContext();
   // const { productType } = useParams();
   // console.log(productType);
 
@@ -84,7 +92,7 @@ function Shoppage() {
 
   return (
     <div className={styles.shoppage}>
-      <ProductNav />
+      <ProductNav sortType={sortType} setSortType={setSortType} />
       {isLoading && <Loader />}
       {error && <Error error={error} />}
       {data && isRootShopRoute ? (

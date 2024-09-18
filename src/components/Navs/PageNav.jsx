@@ -19,15 +19,13 @@ function PageNav({ cartItems }) {
         <Logo />
         <ul>
           <li>
-            <NavLink to="/" end>
-              Home
-            </NavLink>
+            <NavLink to="/">Home</NavLink>
           </li>
           <li>
             <NavLink to="/shop/all" end>
               Store
             </NavLink>
-            <NavLink to="/shop/all">
+            <NavLink to="/shop/all" end>
               <img src="/shop.png" alt="" className={styles.img} />
             </NavLink>
           </li>

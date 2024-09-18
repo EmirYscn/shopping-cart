@@ -5,6 +5,7 @@ import styles from "./Cart.module.css";
 import Button from "../Button/Button";
 
 function Cart() {
+  document.title = "Cart";
   const { cartItems, setCartItems } = useOutletContext();
   const subtotal = cartItems?.reduce(
     (acc, cur) => (acc += cur.product.price * cur.count),
@@ -23,6 +24,9 @@ function Cart() {
         </>
       ) : (
         <>
+          <Button type="back" onClick={() => navigate("/shop/all")}>
+            <img src="/back.png" alt="" />
+          </Button>
           <h1>YOUR CART</h1>
           <ul>
             {cartItems.map((cartItem) => (

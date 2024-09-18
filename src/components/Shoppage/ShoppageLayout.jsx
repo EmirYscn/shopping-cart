@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 
 function ShoppageLayout() {
   const { cartItems, setCartItems } = useOutletContext();
+  const [sortType, setSortType] = useState("sortBy");
 
   const { productType } = useParams();
   console.log(productType);
@@ -34,6 +35,13 @@ function ShoppageLayout() {
             );
           }
         }
+        if (sortType !== "sortBy") {
+          if (sortType === "priceAsc") {
+            products.sort((a, b) => a.price - b.price);
+          } else if (sortType === "priceDesc") {
+            products.sort((a, b) => b.price - a.price);
+          }
+        }
 
         console.log(products);
         setData(products);
@@ -48,7 +56,7 @@ function ShoppageLayout() {
     fetchProducts();
 
     return () => console.log("cleaned fetch");
-  }, [productType]);
+  }, [productType, sortType]);
 
   function handleCartItems(item) {
     // console.log(item);
@@ -77,6 +85,8 @@ function ShoppageLayout() {
           cartItems,
           setCartItems,
           handleCartItems,
+          sortType,
+          setSortType,
         }}
       />
     </div>

@@ -3,6 +3,7 @@ import styles from "./Login.module.css";
 import Button from "../Button/Button";
 
 export default function Login() {
+  document.title = "Login";
   // PRE-FILL FOR DEV PURPOSES
   const [email, setEmail] = useState("jack@example.com");
   const [password, setPassword] = useState("qwerty");

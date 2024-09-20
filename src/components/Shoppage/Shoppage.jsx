@@ -1,10 +1,6 @@
-import { useEffect, useState } from "react";
-import {
-  Outlet,
-  useLocation,
-  useOutletContext,
-  useParams,
-} from "react-router-dom";
+import { Outlet, useLocation, useOutletContext } from "react-router-dom";
+import { useContext } from "react";
+import ThemeContext from "../Contexts/ThemeContext";
 
 import ProductCards from "../ProductCards/ProductCards";
 import Error from "../Error/Error";
@@ -25,6 +21,7 @@ function Shoppage() {
     setSortType,
   } = useOutletContext();
 
+  const { theme } = useContext(ThemeContext);
   const { pathname } = useLocation();
   // Check if the current route starts with '/shop'
   const isRootShopRoute = pathname.startsWith("/shop");
@@ -45,7 +42,11 @@ function Shoppage() {
   }
 
   return (
-    <div className={styles.shoppage}>
+    <div
+      className={`${styles.shoppage} ${
+        theme === "dark" ? styles.darkTheme : styles.lightTheme
+      }`}
+    >
       <ProductNav sortType={sortType} setSortType={setSortType} />
       {isLoading && <Loader />}
       {error && <Error error={error} />}

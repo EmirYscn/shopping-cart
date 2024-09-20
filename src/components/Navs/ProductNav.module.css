@@ -7,6 +7,22 @@
   height: 100px;
   color: rgb(0, 0, 0);
 }
+
+.darkTheme {
+  background-color: var(--color-dark--0);
+  transition: all 0.5s;
+}
+
+.lightTheme {
+  background-color: var(--color-6);
+  transition: all 0.5s;
+}
+
+.darkTheme a:link,
+.darkTheme a:visited {
+  color: white;
+}
+
 .nav ul {
   display: flex;
   justify-content: space-between;
@@ -30,7 +46,6 @@
 .nav a:link,
 .nav a:visited {
   text-decoration: none;
-  color: black;
   text-transform: uppercase;
   font-size: 0.9rem;
   font-weight: 600;

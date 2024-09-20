@@ -1,11 +1,18 @@
-import { NavLink, useLocation } from "react-router-dom";
-import Logo from "./Logo";
+import { NavLink } from "react-router-dom";
+import { useContext } from "react";
+import ThemeContext from "../Contexts/ThemeContext";
 
 import styles from "./ProductNav.module.css";
 
-function ProductNav({ cartItems, sortType, setSortType }) {
+function ProductNav({ sortType, setSortType }) {
+  const { theme } = useContext(ThemeContext);
+
   return (
-    <nav className={styles.nav}>
+    <nav
+      className={`${styles.nav} ${
+        theme === "dark" ? styles.darkTheme : styles.lightTheme
+      }`}
+    >
       <ul>
         <li>
           <NavLink to="/shop/all">All</NavLink>

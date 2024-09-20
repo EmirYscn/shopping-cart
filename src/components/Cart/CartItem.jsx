@@ -1,9 +1,12 @@
-import { useEffect, useState } from "react";
+import { useState, useContext } from "react";
+
+import ThemeContext from "../Contexts/ThemeContext";
 import Button from "../Button/Button";
 import styles from "./CartItem.module.css";
 
 function CartItem({ cartItem, cartItems, setCartItems }) {
   const [itemQuantity, setItemQuantity] = useState(cartItem.count);
+  const { theme } = useContext(ThemeContext);
 
   // Function to handle cart item deletion
   function handleDeleteCartItem(item) {
@@ -34,7 +37,9 @@ function CartItem({ cartItem, cartItems, setCartItems }) {
 
   return (
     <li className={styles.cartItem}>
-      <img src={cartItem.product.image} alt="" />
+      <div className={styles.cartImage}>
+        <img src={cartItem.product.image} alt="" />
+      </div>
       <div className={styles.titlePrice}>
         <span>
           <strong>{cartItem.product.title}</strong>
@@ -47,7 +52,7 @@ function CartItem({ cartItem, cartItems, setCartItems }) {
             <strong>Quantity</strong>
           </span>
           <Button
-            type="cart-delete"
+            type={`cart-delete-${theme}`}
             onClick={() => {
               handleDeleteCartItem(cartItem);
             }}
@@ -55,9 +60,13 @@ function CartItem({ cartItem, cartItems, setCartItems }) {
             &times;
           </Button>
         </div>
-        <div className={styles.count}>
+        <div
+          className={`${styles.count} ${
+            theme === "dark" ? styles.darkTheme : styles.lightTheme
+          }`}
+        >
           <Button
-            type="cart-quantity"
+            type={`cart-quantity-${theme}`}
             onClick={() => {
               handleQuantityChange(-1);
             }}
@@ -66,7 +75,7 @@ function CartItem({ cartItem, cartItems, setCartItems }) {
           </Button>
           <span>{itemQuantity}</span>
           <Button
-            type="cart-quantity"
+            type={`cart-quantity-${theme}`}
             onClick={() => {
               handleQuantityChange(1);
             }}

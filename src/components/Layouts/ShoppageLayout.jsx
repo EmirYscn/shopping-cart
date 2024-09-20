@@ -6,7 +6,6 @@ function ShoppageLayout() {
   const [sortType, setSortType] = useState("sortBy");
 
   const { productType } = useParams();
-  console.log(productType);
 
   const [data, setData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
@@ -32,10 +31,10 @@ function ShoppageLayout() {
         setIsLoading(false);
       }
     };
-    console.log("fetching items");
+    console.log("fetching data");
     fetchProducts();
 
-    return () => console.log("cleaned fetch");
+    return () => console.log("destroying fetched data");
   }, []);
 
   const filteredData = useMemo(() => {

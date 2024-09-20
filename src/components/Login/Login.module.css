@@ -4,10 +4,10 @@
   background-color: var(--color-dark--1);
   min-height: calc(100vh - 100px);
   color: white;
+  background-color: var(--color-dark--0);
 }
 
 .form {
-  background-color: var(--color-dark--2);
   border-radius: 7px;
   padding: 2rem 3rem;
   width: 100%;

@@ -44,3 +44,14 @@
 .checkout:last-child(1) {
   grid-column: span 2;
 }
+
+.darkTheme {
+  background-color: var(--color-dark--0);
+  color: white;
+  transition: all 0.5s;
+}
+
+.lightTheme {
+  background-color: white;
+  transition: all 0.5s;
+}

@@ -1,5 +1,9 @@
 import { NavLink, useLocation } from "react-router-dom";
+import { useContext } from "react";
+
+import ThemeContext from "../Contexts/ThemeContext";
 import Logo from "./Logo";
+import Button from "../Button/Button";
 import styles from "./PageNav.module.css";
 
 function PageNav({ cartItems }) {
@@ -12,6 +16,8 @@ function PageNav({ cartItems }) {
   const { pathname } = useLocation();
   const notInShop = pathname === "/";
   // const inShop = pathname === "/shop" || pathname === "/shop/cart";
+
+  const { theme, setTheme } = useContext(ThemeContext);
 
   return (
     <nav className={styles.nav}>
@@ -43,6 +49,19 @@ function PageNav({ cartItems }) {
           <NavLink to="/support">
             <img src="/support.png" alt="" className={styles.img} />
           </NavLink>
+        </li>
+        <li>
+          <Button
+            type="theme"
+            onClick={() =>
+              setTheme((theme) => (theme === "dark" ? "light" : "dark"))
+            }
+          >
+            <img
+              src={`${theme === "dark" ? "/moon.png" : "/sun.png"}`}
+              alt=""
+            />
+          </Button>
         </li>
         <li>
           <NavLink to="/account" end>

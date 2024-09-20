@@ -8,10 +8,12 @@
   border-bottom: 1px solid rgba(128, 128, 128, 0.361);
   padding-bottom: 1em;
 }
-/* .cartItem img {
-  max-width: 200px;
-  height: auto;
-} */
+.cartImage {
+  /* background-color: red; */
+  border-radius: 8px;
+  /* box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
+    rgba(0, 0, 0, 0.3) 0px 30px 60px -30px; */
+}
 
 .titlePrice {
   display: flex;
@@ -33,4 +35,15 @@
 
 .count {
   border: 1px solid black;
+}
+
+.darkTheme {
+  background-color: var(--color-dark--0);
+  transition: all 0.5s;
+  border: 1px solid rgba(255, 255, 255, 0.361);
+}
+
+.lightTheme {
+  background-color: white;
+  transition: all 0.5s;
 }

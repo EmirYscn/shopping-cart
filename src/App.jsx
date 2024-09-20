@@ -7,7 +7,7 @@ import NotFound from "./components/NotFound/NotFound.jsx";
 import AppLayout from "./components/Layouts/AppLayout.jsx";
 import ProductPage from "./components/ProductPage/ProductPage.jsx";
 import Login from "./components/Login/Login.jsx";
-import ShoppageLayout from "./components/Shoppage/ShoppageLayout.jsx";
+import ShoppageLayout from "./components/Layouts/ShoppageLayout.jsx";
 
 const router = createBrowserRouter([
   {

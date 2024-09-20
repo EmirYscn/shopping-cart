@@ -1,11 +1,13 @@
-import { useMemo } from "react";
+import { useMemo, useContext } from "react";
 import { useNavigate, useOutletContext } from "react-router-dom";
-import CartItem from "./CartItem";
 
+import CartItem from "./CartItem";
+import ThemeContext from "../Contexts/ThemeContext";
 import styles from "./Cart.module.css";
 import Button from "../Button/Button";
 
 function Cart() {
+  const { theme } = useContext(ThemeContext);
   document.title = "Cart";
   const { cartItems, setCartItems } = useOutletContext();
 
@@ -18,7 +20,11 @@ function Cart() {
 
   const navigate = useNavigate();
   return (
-    <div className={cartItems.length ? styles.cart : styles.cartEmpty}>
+    <div
+      className={`${cartItems.length ? styles.cart : styles.cartEmpty} ${
+        theme === "dark" ? styles.darkTheme : styles.lightTheme
+      }`}
+    >
       {!cartItems.length ? (
         <>
           <h2>Your cart is empty</h2>

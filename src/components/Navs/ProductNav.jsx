@@ -30,7 +30,7 @@ function ProductNav({ cartItems, sortType, setSortType }) {
         value={sortType}
         onChange={(e) => setSortType(e.target.value)}
       >
-        <option value={"sortBy"} disabled selected>
+        <option value={"sortBy"} disabled>
           Sort By
         </option>
         <option value="priceAsc">Price: Ascending</option>

@@ -1,3 +1,4 @@
+import { useMemo } from "react";
 import { useNavigate, useOutletContext } from "react-router-dom";
 import CartItem from "./CartItem";
 
@@ -7,12 +8,15 @@ import Button from "../Button/Button";
 function Cart() {
   document.title = "Cart";
   const { cartItems, setCartItems } = useOutletContext();
-  const subtotal = cartItems?.reduce(
-    (acc, cur) => (acc += cur.product.price * cur.count),
-    0
-  );
+
+  const subtotal = useMemo(() => {
+    return cartItems?.reduce(
+      (acc, cur) => (acc += cur.product.price * cur.count),
+      0
+    );
+  }, [cartItems]);
+
   const navigate = useNavigate();
-  console.log(cartItems);
   return (
     <div className={cartItems.length ? styles.cart : styles.cartEmpty}>
       {!cartItems.length ? (
@@ -24,7 +28,7 @@ function Cart() {
         </>
       ) : (
         <>
-          <Button type="back" onClick={() => navigate("/shop/all")}>
+          <Button type="back" onClick={() => navigate(-1)}>
             <img src="/back.png" alt="" />
           </Button>
           <h1>YOUR CART</h1>

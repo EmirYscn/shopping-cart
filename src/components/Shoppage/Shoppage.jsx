@@ -24,58 +24,12 @@ function Shoppage() {
     sortType,
     setSortType,
   } = useOutletContext();
-  // const { productType } = useParams();
-  // console.log(productType);
-
-  // const [data, setData] = useState([]);
-  // const [isLoading, setIsLoading] = useState(true);
-  // const [error, setError] = useState(null);
 
   const { pathname } = useLocation();
   // Check if the current route starts with '/shop'
   const isRootShopRoute = pathname.startsWith("/shop");
 
-  // useEffect(() => {
-  //   const fetchProducts = async () => {
-  //     try {
-  //       const response = await fetch("https://fakestoreapi.com/products", {
-  //         signal,
-  //       });
-
-  //       if (!response.ok) {
-  //         throw new Error(`HTTP error: Status ${response.status}`);
-  //       }
-
-  //       let products = await response.json();
-
-  //       if (productType !== "all") {
-  //         if (productType === "men" || productType === "women") {
-  //           products = products.filter(
-  //             (product) => product.category === `${productType}'s clothing`
-  //           );
-  //         } else {
-  //           products = products.filter(
-  //             (product) => product.category === productType
-  //           );
-  //         }
-  //       }
-
-  //       console.log(products);
-  //       setData(products);
-  //     } catch (err) {
-  //       setError(err.message);
-  //       setData(null);
-  //     } finally {
-  //       setIsLoading(false);
-  //     }
-  //   };
-  //   console.log("fetching items");
-  //   fetchProducts();
-  // }, [productType]);
-
   function handleCartItems(item) {
-    // console.log(item);
-    // console.log(cartItems);
     if (cartItems.some((cartItem) => cartItem.product.id === item.product.id)) {
       // Update the existing cart item
       const updatedCartItems = cartItems.map((cartItem) =>
